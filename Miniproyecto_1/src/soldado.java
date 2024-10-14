@@ -15,6 +15,7 @@ public class soldado {
         System.out.println("Rango: " + rango);
     }
 
+
     void atacar(){
         System.out.println("Atacando...");
     }
