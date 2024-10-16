@@ -3,20 +3,15 @@ public class soldado {
     protected String id;
     protected String rango;
 
-    public soldado(String nombre, String id, String rango){
+    public soldado(String nombre, String id) {
         this.nombre = nombre;
         this.id = id;
-        this.rango = rango;
+        this.rango = "Soldado Raso"; // Valor por defecto
     }
 
-    void mostrar_informacion(){
+    public void mostrarInformacion() {
         System.out.println("Nombre: " + nombre);
         System.out.println("ID: " + id);
         System.out.println("Rango: " + rango);
-    }
-
-
-    void atacar(){
-        System.out.println("Atacando...");
     }
 }

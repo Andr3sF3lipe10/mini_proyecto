@@ -1,12 +1,10 @@
-public abstract class  Rango {
-
+public abstract class Rango extends soldado {
     protected int nivel;
 
-    
-    public Rango(int nivel) {
+    public Rango(String nombre, String id, int nivel) {
+        super(nombre, id);
         this.nivel = nivel;
     }
 
     public abstract void realizarAccion();
-
 }
