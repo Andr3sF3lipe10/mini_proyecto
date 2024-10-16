@@ -1,14 +1,21 @@
-public class Teniente extends Rango {
+public class Teniente extends soldado implements OperacionesMilitares {
     private String unidad;
+    private String misionAsignada;
 
     public Teniente(String nombre, String id, String unidad) {
-        super(nombre, id, 2); 
-        this.unidad = unidad;
+        super(nombre, id);
         this.rango = "Teniente";
+        this.unidad = unidad;
     }
 
     @Override
-    public void realizarAccion() {
-        System.out.println(nombre + " está supervisando a los soldados en la unidad " + unidad + ".");
+    public void asignarMision(String mision) {
+        this.misionAsignada = mision;
+        System.out.println("Teniente " + nombre + " ha recibido la misión: " + mision);
+    }
+
+    @Override
+    public void reportarEstado() {
+        System.out.println("Teniente " + nombre + " reporta: Unidad " + unidad + " lista para la misión.");
     }
 }
