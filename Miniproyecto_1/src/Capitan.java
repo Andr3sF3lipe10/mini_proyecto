@@ -1,13 +1,18 @@
-public class Capitan extends soldado implements OperacionesMilitares {
+public class Capitan extends Rango implements OperacionesMilitares {
     private int cantidadSoldadosBajoSuMando;
     private String misionAsignada;
 
     public Capitan(String nombre, String id, int cantidadSoldadosBajoSuMando) {
-        super(nombre, id);
+        super(nombre, id, 3); // Nivel 3 para Capitán
         this.rango = "Capitán";
         this.cantidadSoldadosBajoSuMando = cantidadSoldadosBajoSuMando;
     }
 
+    @Override
+    public void realizarAccion() {
+        System.out.println(nombre + " está coordinando la misión: " + misionAsignada + " con " + cantidadSoldadosBajoSuMando + " soldados.");
+    }
+    
     @Override
     public void asignarMision(String mision) {
         this.misionAsignada = mision;

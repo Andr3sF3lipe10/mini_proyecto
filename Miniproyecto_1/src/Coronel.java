@@ -1,11 +1,16 @@
-public class Coronel extends soldado implements OperacionesMilitares {
+public class Coronel extends Rango implements OperacionesMilitares {
     private String estrategia;
     private String misionAsignada;
 
     public Coronel(String nombre, String id, String estrategia) {
-        super(nombre, id);
+        super(nombre, id, 4); // Nivel 4 para Coronel
         this.rango = "Coronel";
         this.estrategia = estrategia;
+    }
+
+    @Override
+    public void realizarAccion() {
+        System.out.println(nombre + " está implementando la estrategia: " + estrategia + " para la misión: " + misionAsignada);
     }
 
     @Override
