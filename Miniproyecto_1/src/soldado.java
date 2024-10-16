@@ -6,7 +6,7 @@ public class soldado {
     public soldado(String nombre, String id) {
         this.nombre = nombre;
         this.id = id;
-        this.rango = "Soldado"; // Valor por defecto, puede ser sobreescrito
+        this.rango = "Soldado Raso"; // Valor por defecto
     }
 
     public void mostrarInformacion() {
