@@ -1,5 +1,5 @@
 public class Teniente extends Rango implements OperacionesMilitares {
-    private String unidad;
+    private final String unidad;
     private String misionAsignada;
 
     public Teniente(String nombre, String id, String unidad) {
@@ -10,9 +10,9 @@ public class Teniente extends Rango implements OperacionesMilitares {
 
     @Override
     public void realizarAccion() {
-        System.out.println(nombre + " está supervisando la unidad " + unidad + " en la misión: " + misionAsignada);
+        System.out.println(nombre + " está supervisando la unidad " + unidad +
+                " en la misión: " + misionAsignada);
     }
-
 
     @Override
     public void asignarMision(String mision) {
@@ -22,6 +22,15 @@ public class Teniente extends Rango implements OperacionesMilitares {
 
     @Override
     public void reportarEstado() {
-        System.out.println("Teniente " + nombre + " reporta: Unidad " + unidad + " lista para la misión.");
+        System.out.println("Teniente " + nombre + " reporta: Unidad " + unidad +
+                " lista para la misión.");
+    }
+
+    public String getUnidad() {
+        return unidad;
+    }
+
+    public String getMisionAsignada() {
+        return misionAsignada;
     }
 }
