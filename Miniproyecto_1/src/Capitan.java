@@ -1,5 +1,5 @@
 public class Capitan extends Rango implements OperacionesMilitares {
-    private int cantidadSoldadosBajoSuMando;
+    private final int cantidadSoldadosBajoSuMando; 
     private String misionAsignada;
 
     public Capitan(String nombre, String id, int cantidadSoldadosBajoSuMando) {
@@ -8,19 +8,33 @@ public class Capitan extends Rango implements OperacionesMilitares {
         this.cantidadSoldadosBajoSuMando = cantidadSoldadosBajoSuMando;
     }
 
+
     @Override
     public void realizarAccion() {
-        System.out.println(nombre + " está coordinando la misión: " + misionAsignada + " con " + cantidadSoldadosBajoSuMando + " soldados.");
+        System.out.println(nombre + " está coordinando la misión: " + misionAsignada + 
+                           " con " + cantidadSoldadosBajoSuMando + " soldados.");
     }
-    
+
     @Override
     public void asignarMision(String mision) {
         this.misionAsignada = mision;
         System.out.println("Capitán " + nombre + " ha recibido la misión: " + mision);
     }
 
+    
     @Override
     public void reportarEstado() {
-        System.out.println("Capitán " + nombre + " reporta: Preparado para coordinar " + misionAsignada + " con " + cantidadSoldadosBajoSuMando + " soldados.");
+        System.out.println("Capitán " + nombre + " reporta: Preparado para coordinar " + 
+                           misionAsignada + " con " + cantidadSoldadosBajoSuMando + " soldados.");
+    }
+
+
+    public int getCantidadSoldadosBajoSuMando() {
+        return cantidadSoldadosBajoSuMando;
+    }
+
+
+    public String getMisionAsignada() {
+        return misionAsignada;
     }
 }
