@@ -1,3 +1,8 @@
+package militar.soldados;
+import militar.operaciones.OperacionesMilitares;
+import militar.rangos.Rango;
+
+
 public class SoldadoRaso extends Rango implements OperacionesMilitares {
     private String misionAsignada;
 

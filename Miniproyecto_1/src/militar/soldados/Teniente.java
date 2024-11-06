@@ -1,3 +1,8 @@
+package militar.soldados;
+
+import militar.operaciones.OperacionesMilitares;
+import militar.rangos.Rango;
+
 public class Teniente extends Rango implements OperacionesMilitares {
     private final String unidad;
     private String misionAsignada;

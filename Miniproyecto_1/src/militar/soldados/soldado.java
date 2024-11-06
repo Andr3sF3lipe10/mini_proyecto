@@ -1,3 +1,4 @@
+package militar.soldados;
 public class soldado {
     protected String nombre;
     protected final String id;
