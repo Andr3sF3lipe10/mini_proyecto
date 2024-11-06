@@ -30,6 +30,11 @@ public class Teniente extends Rango implements OperacionesMilitares {
         System.out.println("Teniente " + nombre + " reporta: Unidad " + unidad +
                 " lista para la misión.");
     }
+    // Método sobrescrito para preparación
+    @Override
+    public void prepararseParaMision() {
+        System.out.println("teniente " + nombre + " esta revisando el plan de la mision.");
+      }
 
     public String getUnidad() {
         return unidad;

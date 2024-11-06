@@ -10,4 +10,9 @@ public abstract class Rango extends soldado {
     }
 
     public abstract void realizarAccion();
+
+     // Método común a sobrescribir en clases derivadas
+     public void prepararseParaMision() {
+        System.out.println("Preparandose para la mision.");
+    }
 }

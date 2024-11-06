@@ -25,5 +25,18 @@ public class App {
 
     public static void reportarEstadoSoldado (Rango soldado) {
         soldado.realizarAccion();
+
+        // Downcasting según el tipo de soldado para acceder a métodos específicos
+        if (soldado instanceof Capitan) {
+            Capitan capitan = (Capitan) soldado;  // Downcast a Capitan
+            System.out.println("Número de soldados bajo su mando: " + capitan.getCantidadSoldadosBajoSuMando());
+            capitan.prepararseParaMision();  // Llamada a método específico de Capitan
+        } else if (soldado instanceof Teniente) {
+            Teniente teniente = (Teniente) soldado;  // Downcast a Teniente
+            System.out.println("Unidad a cargo: " + teniente.getUnidad());
+            teniente.prepararseParaMision();  // Llamada a método específico de Teniente
+        }
+        // Similar para otras subclases como Coronel
+    
     }
 }
