@@ -1,3 +1,9 @@
+import militar.rangos.Rango;
+import militar.soldados.Capitan;
+import militar.soldados.Coronel;
+import militar.soldados.SoldadoRaso;
+import militar.soldados.Teniente;
+
 public class App {
     public static void main(String[] args) throws Exception {
         SoldadoRaso soldado1 = new SoldadoRaso("Juan", "1");

@@ -1,3 +1,7 @@
+package militar.soldados;
+
+import militar.operaciones.OperacionesMilitares;
+import militar.rangos.Rango;
 public class Capitan extends Rango implements OperacionesMilitares {
     private final int cantidadSoldadosBajoSuMando; 
     private String misionAsignada;

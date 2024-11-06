@@ -1,3 +1,7 @@
+package militar.soldados;
+
+import militar.operaciones.OperacionesMilitares;
+import militar.rangos.Rango;
 public class Coronel extends Rango implements OperacionesMilitares {
     private final String estrategia;  
     private String misionAsignada;

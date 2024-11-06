@@ -1,3 +1,6 @@
+package militar.rangos;
+import militar.soldados.soldado;
+
 public abstract class Rango extends soldado {
     protected int nivel;
 
