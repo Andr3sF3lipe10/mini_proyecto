@@ -32,6 +32,12 @@ public class Capitan extends Rango implements OperacionesMilitares {
                            misionAsignada + " con " + cantidadSoldadosBajoSuMando + " soldados.");
     }
 
+    // Método sobrescrito para preparación
+    @Override
+    public void prepararseParaMision() {
+        System.out.println("Capitan " + nombre + " esta revisando el plan de la mision.");
+      }
+
 
     public int getCantidadSoldadosBajoSuMando() {
         return cantidadSoldadosBajoSuMando;
