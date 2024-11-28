@@ -1,8 +1,12 @@
 package militar.rangos;
 
-import militar.soldados.soldado;
+import militar.operaciones.OperacionesMilitares;
+import militar.soldados.soldado;;
 
-public abstract class Rango extends soldado {
+/**
+ * Clase abstracta que representa un rango militar.
+ */
+public abstract class Rango extends soldado implements OperacionesMilitares {
     protected int nivel;
 
     public Rango(String nombre, String id, int nivel) {
@@ -10,9 +14,10 @@ public abstract class Rango extends soldado {
         this.nivel = nivel;
     }
 
-    public abstract String realizarAccion();
-
-    public abstract String asignarMision(String mision);
+    // Métodos Getter
+    public int getNivel() {
+        return nivel;
+    }
 
     // Método común a sobrescribir en clases derivadas
     public void prepararseParaMision() {

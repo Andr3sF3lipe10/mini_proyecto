@@ -1,9 +1,12 @@
 package militar.soldados;
 
-import militar.operaciones.OperacionesMilitares;
 import militar.rangos.Rango;
 
-public class Teniente extends Rango implements OperacionesMilitares {
+/**
+ * Clase que representa a un Teniente.
+ */
+public class Teniente extends Rango {
+
     private final String unidad;
     private String misionAsignada;
 
@@ -15,27 +18,28 @@ public class Teniente extends Rango implements OperacionesMilitares {
 
     @Override
     public String realizarAccion() {
-        return nombre + " está supervisando la unidad " + unidad +
+        return getNombre() + " está supervisando la unidad " + unidad +
                 " en la misión: " + misionAsignada;
     }
 
     @Override
     public String asignarMision(String mision) {
         this.misionAsignada = mision;
-        return "Teniente " + nombre + " ha recibido la misión: " + mision;
+        return "Teniente " + getNombre() + " ha recibido la misión: " + mision;
     }
 
     @Override
     public void reportarEstado() {
-        System.out.println("Teniente " + nombre + " reporta: Unidad " + unidad +
+        System.out.println("Teniente " + getNombre() + " reporta: Unidad " + unidad +
                 " lista para la misión.");
     }
 
     @Override
     public void prepararseParaMision() {
-        System.out.println("Teniente " + nombre + " está revisando el plan de la misión.");
+        System.out.println("Teniente " + getNombre() + " está revisando el plan de la misión.");
     }
 
+    // Métodos Getter
     public String getUnidad() {
         return unidad;
     }

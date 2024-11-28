@@ -1,9 +1,12 @@
 package militar.soldados;
 
-import militar.operaciones.OperacionesMilitares;
 import militar.rangos.Rango;
 
-public class SoldadoRaso extends Rango implements OperacionesMilitares {
+/**
+ * Clase que representa a un Soldado Raso.
+ */
+public class SoldadoRaso extends Rango {
+
     private String misionAsignada;
 
     public SoldadoRaso(String nombre, String id) {
@@ -13,20 +16,21 @@ public class SoldadoRaso extends Rango implements OperacionesMilitares {
 
     @Override
     public String realizarAccion() {
-        return nombre + " está siguiendo órdenes en la misión: " + misionAsignada;
+        return getNombre() + " está siguiendo órdenes en la misión: " + misionAsignada;
     }
 
     @Override
     public String asignarMision(String mision) {
         this.misionAsignada = mision;
-        return "Soldado Raso " + nombre + " ha recibido la misión: " + mision;
+        return "Soldado Raso " + getNombre() + " ha recibido la misión: " + mision;
     }
 
     @Override
     public void reportarEstado() {
-        System.out.println("Soldado Raso " + nombre + " reporta: En posición y listo para la misión.");
+        System.out.println("Soldado Raso " + getNombre() + " reporta: En posición y listo para la misión.");
     }
 
+    // Método Getter
     public String getMisionAsignada() {
         return misionAsignada;
     }

@@ -1,9 +1,12 @@
 package militar.soldados;
 
-import militar.operaciones.OperacionesMilitares;
 import militar.rangos.Rango;
 
-public class Coronel extends Rango implements OperacionesMilitares {
+/**
+ * Clase que representa a un Coronel.
+ */
+public class Coronel extends Rango {
+
     private final String estrategia;
     private String misionAsignada;
 
@@ -15,22 +18,23 @@ public class Coronel extends Rango implements OperacionesMilitares {
 
     @Override
     public String realizarAccion() {
-        return nombre + " está implementando la estrategia: " + estrategia +
+        return getNombre() + " está implementando la estrategia: " + estrategia +
                 " para la misión: " + misionAsignada;
     }
 
     @Override
     public String asignarMision(String mision) {
         this.misionAsignada = mision;
-        return "Coronel " + nombre + " ha recibido la misión: " + mision;
+        return "Coronel " + getNombre() + " ha recibido la misión: " + mision;
     }
 
     @Override
     public void reportarEstado() {
-        System.out.println("Coronel " + nombre + " reporta: Estrategia " + estrategia +
+        System.out.println("Coronel " + getNombre() + " reporta: Estrategia " + estrategia +
                 " en ejecución para la misión " + misionAsignada + ".");
     }
 
+    // Métodos Getter
     public String getEstrategia() {
         return estrategia;
     }
