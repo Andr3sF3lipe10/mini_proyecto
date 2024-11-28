@@ -17,6 +17,10 @@ public class MainFrame extends JFrame {
     private JButton btnAsignarMision, btnRealizarAccion, btnCrearSoldado, btnReset;
     private JCheckBox chkPrepararse;
     private JRadioButton rbtnReporteEstado;
+
+    private JMenuBar menuBar;
+    private JMenu menuArchivo;
+    private JMenuItem menuItemSalir;
     private JSplitPane splitPane;
 
     // Lista por defecto de soldados
@@ -38,7 +42,12 @@ public class MainFrame extends JFrame {
         setSize(800, 600);
 
         // Menú
-      
+        menuBar = new JMenuBar();
+        menuArchivo = new JMenu("Archivo");
+        menuItemSalir = new JMenuItem("Salir");
+        menuArchivo.add(menuItemSalir);
+        menuBar.add(menuArchivo);
+        setJMenuBar(menuBar);
 
         // Panel izquierdo (lista de soldados)
         modeloSoldados = new DefaultListModel<>();
@@ -140,6 +149,8 @@ public class MainFrame extends JFrame {
         btnReset.addActionListener(e -> cargarSoldadosPorDefecto());
 
         // Menú Salir
+
+        menuItemSalir.addActionListener(e -> System.exit(0));
     }
 
     /**
