@@ -1,4 +1,5 @@
 package militar.rangos;
+
 import militar.soldados.soldado;
 
 public abstract class Rango extends soldado {
@@ -9,10 +10,12 @@ public abstract class Rango extends soldado {
         this.nivel = nivel;
     }
 
-    public abstract void realizarAccion();
+    public abstract String realizarAccion();
 
-     // Método común a sobrescribir en clases derivadas
-     public void prepararseParaMision() {
-        System.out.println("Preparandose para la mision.");
+    public abstract String asignarMision(String mision);
+
+    // Método común a sobrescribir en clases derivadas
+    public void prepararseParaMision() {
+        System.out.println("Preparándose para la misión.");
     }
 }

@@ -1,4 +1,5 @@
 package militar.soldados;
+
 public class soldado {
     protected String nombre;
     protected final String id;
@@ -20,5 +21,23 @@ public class soldado {
 
     public static int getContadorSoldados() {
         return contadorSoldados;
+    }
+
+    @Override
+    public String toString() {
+        return rango + " " + nombre + " (ID: " + id + ")";
+    }
+
+     // Métodos Getter
+     public String getNombre() {
+        return nombre;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getRango() {
+        return rango;
     }
 }

@@ -1,5 +1,6 @@
 package militar.operaciones;
+
 public interface OperacionesMilitares {
-    void asignarMision(String mision);
+    String asignarMision(String mision);
     void reportarEstado();
 }
