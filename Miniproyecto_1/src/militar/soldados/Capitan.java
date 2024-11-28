@@ -1,9 +1,12 @@
 package militar.soldados;
 
-import militar.operaciones.OperacionesMilitares;
 import militar.rangos.Rango;
 
-public class Capitan extends Rango implements OperacionesMilitares {
+/**
+ * Clase que representa a un Capitán.
+ */
+public class Capitan extends Rango {
+
     private final int cantidadSoldadosBajoSuMando;
     private String misionAsignada;
 
@@ -15,27 +18,28 @@ public class Capitan extends Rango implements OperacionesMilitares {
 
     @Override
     public String realizarAccion() {
-        return nombre + " está coordinando la misión: " + misionAsignada +
+        return getNombre() + " está coordinando la misión: " + misionAsignada +
                 " con " + cantidadSoldadosBajoSuMando + " soldados.";
     }
 
     @Override
     public String asignarMision(String mision) {
         this.misionAsignada = mision;
-        return "Capitán " + nombre + " ha recibido la misión: " + mision;
+        return "Capitán " + getNombre() + " ha recibido la misión: " + mision;
     }
 
     @Override
     public void reportarEstado() {
-        System.out.println("Capitán " + nombre + " reporta: Preparado para coordinar " +
+        System.out.println("Capitán " + getNombre() + " reporta: Preparado para coordinar " +
                 misionAsignada + " con " + cantidadSoldadosBajoSuMando + " soldados.");
     }
 
     @Override
     public void prepararseParaMision() {
-        System.out.println("Capitán " + nombre + " está revisando el plan de la misión.");
+        System.out.println("Capitán " + getNombre() + " está revisando el plan de la misión.");
     }
 
+    // Métodos Getter
     public int getCantidadSoldadosBajoSuMando() {
         return cantidadSoldadosBajoSuMando;
     }
