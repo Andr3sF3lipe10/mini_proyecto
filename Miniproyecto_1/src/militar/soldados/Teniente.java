@@ -14,15 +14,15 @@ public class Teniente extends Rango implements OperacionesMilitares {
     }
 
     @Override
-    public void realizarAccion() {
-        System.out.println(nombre + " está supervisando la unidad " + unidad +
-                " en la misión: " + misionAsignada);
+    public String realizarAccion() {
+        return nombre + " está supervisando la unidad " + unidad +
+                " en la misión: " + misionAsignada;
     }
 
     @Override
-    public void asignarMision(String mision) {
+    public String asignarMision(String mision) {
         this.misionAsignada = mision;
-        System.out.println("Teniente " + nombre + " ha recibido la misión: " + mision);
+        return "Teniente " + nombre + " ha recibido la misión: " + mision;
     }
 
     @Override
@@ -30,11 +30,11 @@ public class Teniente extends Rango implements OperacionesMilitares {
         System.out.println("Teniente " + nombre + " reporta: Unidad " + unidad +
                 " lista para la misión.");
     }
-    // Método sobrescrito para preparación
+
     @Override
     public void prepararseParaMision() {
-        System.out.println("teniente " + nombre + " esta revisando el plan de la mision.");
-      }
+        System.out.println("Teniente " + nombre + " está revisando el plan de la misión.");
+    }
 
     public String getUnidad() {
         return unidad;
