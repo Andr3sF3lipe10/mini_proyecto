@@ -21,6 +21,12 @@ public class MainFrame extends JFrame {
     private JCheckBox chkPrepararse;
     private JRadioButton rbtnReporteEstado;
     private JSplitPane splitPane;
+    private JMenuBar menuBar;
+    private JMenu menuArchivo;
+    private JMenuItem menuItemSalir;
+    
+
+
 
     // Lista por defecto de soldados
     private java.util.List<Rango> listaSoldadosPorDefecto;
@@ -47,6 +53,15 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
         setLocationRelativeTo(null);
+
+         // Menú
+         menuBar = new JMenuBar();
+         menuArchivo = new JMenu("Archivo");
+         menuItemSalir = new JMenuItem("Salir");
+         menuArchivo.add(menuItemSalir);
+         menuBar.add(menuArchivo);
+         setJMenuBar(menuBar);
+ 
     
         // Modelo y lista de soldados
         modeloSoldados = new DefaultListModel<>();
@@ -177,6 +192,10 @@ public class MainFrame extends JFrame {
             dialog.setVisible(true);
         });
         btnReset.addActionListener(e -> cargarSoldadosPorDefecto());
+
+        // Menú Salir
+
+        menuItemSalir.addActionListener(e -> System.exit(0));
     }
 
     /**
