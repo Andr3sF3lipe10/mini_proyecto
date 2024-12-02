@@ -2,6 +2,9 @@ import militar.rangos.Rango;
 import militar.soldados.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+
 
 /**
  * Clase principal que representa la interfaz gráfica de la aplicación.
@@ -17,11 +20,13 @@ public class MainFrame extends JFrame {
     private JButton btnAsignarMision, btnRealizarAccion, btnCrearSoldado, btnReset;
     private JCheckBox chkPrepararse;
     private JRadioButton rbtnReporteEstado;
-
+    private JSplitPane splitPane;
     private JMenuBar menuBar;
     private JMenu menuArchivo;
     private JMenuItem menuItemSalir;
-    private JSplitPane splitPane;
+    
+
+
 
     // Lista por defecto de soldados
     private java.util.List<Rango> listaSoldadosPorDefecto;
@@ -37,65 +42,118 @@ public class MainFrame extends JFrame {
      * Inicializa los componentes de la interfaz gráfica.
      */
     private void inicializarComponentes() {
+        // Cambiar el Look and Feel
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
         setTitle("Sistema Militar");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
+        setLocationRelativeTo(null);
 
-        // Menú
-        menuBar = new JMenuBar();
-        menuArchivo = new JMenu("Archivo");
-        menuItemSalir = new JMenuItem("Salir");
-        menuArchivo.add(menuItemSalir);
-        menuBar.add(menuArchivo);
-        setJMenuBar(menuBar);
-
-        // Panel izquierdo (lista de soldados)
+         // Menú
+         menuBar = new JMenuBar();
+         menuArchivo = new JMenu("Archivo");
+         menuItemSalir = new JMenuItem("Salir");
+         menuArchivo.add(menuItemSalir);
+         menuBar.add(menuArchivo);
+         setJMenuBar(menuBar);
+ 
+    
+        // Modelo y lista de soldados
         modeloSoldados = new DefaultListModel<>();
         listSoldados = new JList<>(modeloSoldados);
-        JScrollPane scrollPaneList = new JScrollPane(listSoldados);
+        listSoldados.setBackground(new Color(240, 240, 240));
+        listSoldados.setForeground(new Color(40, 54, 24));
+        listSoldados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        listSoldados.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        // Panel derecho (detalles y acciones)
-        JPanel panelDerecho = new JPanel();
-        panelDerecho.setLayout(new BoxLayout(panelDerecho, BoxLayout.Y_AXIS));
-        lblNombre = new JLabel("Nombre:");
-        lblID = new JLabel("ID:");
-        lblRango = new JLabel("Rango:");
-        lblInfoEspecifica = new JLabel("Info Específica:");
-        txtMision = new JTextField();
+        JScrollPane scrollPaneList = new JScrollPane(listSoldados);
+        scrollPaneList.getViewport().setBackground(new Color(96, 108, 56)); // Fondo visible
+        scrollPaneList.setBorder(new TitledBorder(new EmptyBorder(5, 5, 5, 5), "Soldados", TitledBorder.CENTER, TitledBorder.TOP, new Font("Arial", Font.BOLD, 12), new Color(254, 250, 224)));
+        scrollPaneList.setPreferredSize(new Dimension(250, 0));
+        
+        scrollPaneList.setBackground(new Color(96, 108, 56));
+        
+    
+        // Panel derecho con diseño GridBagLayout
+        JPanel panelDerecho = new JPanel(new GridBagLayout());
+        panelDerecho.setBorder(new EmptyBorder(10, 10, 10, 10));
+        panelDerecho.setBackground(new Color(254, 250, 224));
+        panelDerecho.setPreferredSize(new Dimension(300, 0));
+        panelDerecho.setMaximumSize(new Dimension(300, Integer.MAX_VALUE));
+        panelDerecho.setMinimumSize(new Dimension(300, 0));
+        panelDerecho.setBorder(new TitledBorder(new EmptyBorder(10, 10, 10, 10), "Detalles del Soldado", TitledBorder.CENTER, TitledBorder.TOP, new Font("Arial", Font.BOLD, 12), new Color(0,0,0)));
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5); // Espaciado entre componentes
+        gbc.anchor = GridBagConstraints.WEST; // Alineación a la izquierda
+        gbc.fill = GridBagConstraints.HORIZONTAL; // Expansión horizontal
+        gbc.weightx = 1.0; // Peso de expansión
+        
+    
+        // Crear y agregar componentes
+        lblNombre = new JLabel("Nombre: ");
+        lblNombre.setFont(new Font("Arial", Font.BOLD, 12));
+        lblID = new JLabel("ID: ");
+        lblID.setFont(new Font("Arial", Font.BOLD, 12));
+        lblRango = new JLabel("Rango: ");
+        lblRango.setFont(new Font("Arial", Font.BOLD, 12));
+        lblInfoEspecifica = new JLabel("Info Específica: ");
+        lblInfoEspecifica.setFont(new Font("Arial", Font.BOLD, 12));
+        txtMision = new JTextField(20);
         txtAreaAcciones = new JTextArea(5, 20);
+        txtAreaAcciones.setLineWrap(true);
         txtAreaAcciones.setEditable(false);
         JScrollPane scrollPaneTextArea = new JScrollPane(txtAreaAcciones);
+        scrollPaneTextArea.setBorder(new TitledBorder(new EmptyBorder(5, 5, 5, 5), "Acciones", TitledBorder.CENTER, TitledBorder.TOP, new Font("Arial", Font.BOLD, 12), new Color(0,0,0)));
         btnAsignarMision = new JButton("Asignar Misión");
+        btnAsignarMision.setBackground(new Color(254, 250, 224));
         btnRealizarAccion = new JButton("Realizar Acción");
+        btnRealizarAccion.setBackground(new Color(254, 250, 224));
         btnCrearSoldado = new JButton("Crear Nuevo Soldado");
+        btnCrearSoldado.setBackground(new Color(254, 250, 224));
         btnReset = new JButton("Resetear");
+        btnReset.setBackground(new Color(254, 250, 224));
         chkPrepararse = new JCheckBox("Prepararse para la misión");
+        chkPrepararse.setBackground(new Color(254, 250, 224));
         rbtnReporteEstado = new JRadioButton("Reportar Estado");
+        rbtnReporteEstado.setBackground(new Color(254, 250, 224));
+    
+        // Agregar componentes al pane  l derecho
+        gbc.gridx = 0; gbc.gridy = 0; panelDerecho.add(lblNombre, gbc);
+        gbc.gridy = 1; panelDerecho.add(lblID, gbc);
+        gbc.gridy = 2; panelDerecho.add(lblRango, gbc);
+        gbc.gridy = 3; panelDerecho.add(lblInfoEspecifica, gbc);
+        gbc.gridy = 4; panelDerecho.add(new JLabel("Misión: "), gbc);
+        gbc.gridy = 5; panelDerecho.add(txtMision, gbc);
+        gbc.gridy = 6; panelDerecho.add(btnAsignarMision, gbc);
+        gbc.gridy = 7; panelDerecho.add(btnRealizarAccion, gbc);
+        gbc.gridy = 8; panelDerecho.add(chkPrepararse, gbc);
+        gbc.gridy = 9; panelDerecho.add(rbtnReporteEstado, gbc);
+        gbc.gridy = 10; panelDerecho.add(btnCrearSoldado, gbc);
+        gbc.gridy = 11; panelDerecho.add(btnReset, gbc);
+    
+        
 
-        // Agregar componentes al panel derecho
-        panelDerecho.add(lblNombre);
-        panelDerecho.add(lblID);
-        panelDerecho.add(lblRango);
-        panelDerecho.add(lblInfoEspecifica);
-        panelDerecho.add(new JLabel("Misión:"));
-        panelDerecho.add(txtMision);
-        panelDerecho.add(btnAsignarMision);
-        panelDerecho.add(btnRealizarAccion);
-        panelDerecho.add(chkPrepararse);
-        panelDerecho.add(rbtnReporteEstado);
-        panelDerecho.add(btnCrearSoldado);
-        panelDerecho.add(btnReset);
-
-        // SplitPane
+        // SplitPane con panel izquierdo y derecho
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPaneList, panelDerecho);
-        splitPane.setDividerLocation(200);
-
+        splitPane.setDividerLocation(250);
+        splitPane.setOneTouchExpandable(true);
+        splitPane.setResizeWeight(0.5);
+        splitPane.setBorder(null);
+        splitPane.setBackground(new Color(254, 250, 224));
+    
         // Agregar componentes al frame
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(splitPane, BorderLayout.CENTER);
         getContentPane().add(scrollPaneTextArea, BorderLayout.SOUTH);
+        getContentPane().setBackground(new Color(254, 250, 224));
+        getContentPane().setPreferredSize(getPreferredSize());
     }
-
     /**
      * Carga la lista por defecto de soldados.
      */
@@ -118,34 +176,21 @@ public class MainFrame extends JFrame {
      * Configura los eventos de los componentes.
      */
     private void configurarEventos() {
-        // Evento al seleccionar un soldado
         listSoldados.addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 Rango soldadoSeleccionado = listSoldados.getSelectedValue();
                 mostrarDetallesSoldado(soldadoSeleccionado);
             }
         });
-
-        // Botón Asignar Misión
         btnAsignarMision.addActionListener(e -> asignarMision());
-
-        // Botón Realizar Acción
         btnRealizarAccion.addActionListener(e -> realizarAccion());
-
-        // Checkbox Prepararse para la misión
         chkPrepararse.addActionListener(e -> prepararseParaMision());
-
-        // RadioButton Reportar Estado
         rbtnReporteEstado.addActionListener(e -> reportarEstado());
-
-        // Botón Crear Nuevo Soldado
         btnCrearSoldado.addActionListener(e -> {
             CrearSoldadoDialog dialog = new CrearSoldadoDialog(this, true, modeloSoldados);
             dialog.setLocationRelativeTo(this);
             dialog.setVisible(true);
         });
-
-        // Botón Resetear
         btnReset.addActionListener(e -> cargarSoldadosPorDefecto());
 
         // Menú Salir
@@ -161,20 +206,14 @@ public class MainFrame extends JFrame {
             lblNombre.setText("Nombre: " + soldado.getNombre());
             lblID.setText("ID: " + soldado.getId());
             lblRango.setText("Rango: " + soldado.getRango());
-
-            // Limpiar información específica
             lblInfoEspecifica.setText("");
 
-            // Mostrar información específica según el tipo de soldado
             if (soldado instanceof Capitan) {
-                Capitan capitan = (Capitan) soldado;
-                lblInfoEspecifica.setText("Soldados bajo mando: " + capitan.getCantidadSoldadosBajoSuMando());
+                lblInfoEspecifica.setText("Soldados bajo mando: " + ((Capitan) soldado).getCantidadSoldadosBajoSuMando());
             } else if (soldado instanceof Teniente) {
-                Teniente teniente = (Teniente) soldado;
-                lblInfoEspecifica.setText("Unidad: " + teniente.getUnidad());
+                lblInfoEspecifica.setText("Unidad: " + ((Teniente) soldado).getUnidad());
             } else if (soldado instanceof Coronel) {
-                Coronel coronel = (Coronel) soldado;
-                lblInfoEspecifica.setText("Estrategia: " + coronel.getEstrategia());
+                lblInfoEspecifica.setText("Estrategia: " + ((Coronel) soldado).getEstrategia());
             }
         }
     }
@@ -187,8 +226,7 @@ public class MainFrame extends JFrame {
         if (soldadoSeleccionado != null) {
             String mision = txtMision.getText();
             if (!mision.isEmpty()) {
-                String mensaje = soldadoSeleccionado.asignarMision(mision);
-                txtAreaAcciones.append(mensaje + "\n");
+                txtAreaAcciones.append(soldadoSeleccionado.asignarMision(mision) + "\n");
                 txtMision.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "Ingrese una misión.");
@@ -204,8 +242,7 @@ public class MainFrame extends JFrame {
     private void realizarAccion() {
         Rango soldadoSeleccionado = listSoldados.getSelectedValue();
         if (soldadoSeleccionado != null) {
-            String accion = soldadoSeleccionado.realizarAccion();
-            txtAreaAcciones.append(accion + "\n");
+            txtAreaAcciones.append(soldadoSeleccionado.realizarAccion() + "\n");
         } else {
             JOptionPane.showMessageDialog(this, "Seleccione un soldado.");
         }

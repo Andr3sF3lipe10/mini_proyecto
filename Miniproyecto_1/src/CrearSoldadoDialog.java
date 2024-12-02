@@ -1,4 +1,3 @@
-
 import militar.rangos.Rango;
 import militar.soldados.*;
 import javax.swing.*;
@@ -20,6 +19,7 @@ public class CrearSoldadoDialog extends JDialog {
         super(parent, modal);
         this.modeloSoldados = modeloSoldados;
         inicializarComponentes();
+
         configurarEventos();
     }
 
@@ -31,26 +31,39 @@ public class CrearSoldadoDialog extends JDialog {
         setSize(400, 300);
         setLayout(new GridLayout(0, 2));
 
-        lblTipoSoldado = new JLabel("Tipo de Soldado:");
+        // Establecer color de fondo
+        getContentPane().setBackground(new Color(254, 250, 224));
+
+        lblTipoSoldado = new JLabel("Tipo de Soldado:", SwingConstants.CENTER);
+        lblTipoSoldado.setFont(lblTipoSoldado.getFont().deriveFont(Font.BOLD));
+        
         cmbTipoSoldado = new JComboBox<>(new String[]{"Soldado Raso", "Teniente", "Capitán", "Coronel"});
 
-        lblNombre = new JLabel("Nombre:");
+        lblNombre = new JLabel("Nombre:", SwingConstants.CENTER);
+        lblNombre.setFont(lblNombre.getFont().deriveFont(Font.BOLD));
         txtNombre = new JTextField();
 
-        lblID = new JLabel("ID:");
+        lblID = new JLabel("ID:", SwingConstants.CENTER);
+        lblID.setFont(lblID.getFont().deriveFont(Font.BOLD));
         txtID = new JTextField();
 
-        lblUnidad = new JLabel("Unidad:");
+        lblUnidad = new JLabel("Unidad:", SwingConstants.CENTER);
+        lblUnidad.setFont(lblUnidad.getFont().deriveFont(Font.BOLD));
         txtUnidad = new JTextField();
 
-        lblCantidadSoldados = new JLabel("Cantidad de Soldados:");
+        lblCantidadSoldados = new JLabel("Cantidad de Soldados:", SwingConstants.CENTER);
+        lblCantidadSoldados.setFont(lblCantidadSoldados.getFont().deriveFont(Font.BOLD));
         txtCantidadSoldados = new JTextField();
 
-        lblEstrategia = new JLabel("Estrategia:");
+        lblEstrategia = new JLabel("Estrategia:", SwingConstants.CENTER);
+        lblEstrategia.setFont(lblEstrategia.getFont().deriveFont(Font.BOLD));
         txtEstrategia = new JTextField();
 
         btnCrear = new JButton("Crear");
+        btnCrear.setFont(btnCrear.getFont().deriveFont(Font.BOLD));
         btnCancelar = new JButton("Cancelar");
+        btnCancelar.setFont(btnCancelar.getFont().deriveFont(Font.BOLD));
+
 
         add(lblTipoSoldado);
         add(cmbTipoSoldado);
