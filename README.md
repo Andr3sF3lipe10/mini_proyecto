@@ -97,49 +97,65 @@ El programa mostrará la asignación de misiones para cada soldado y el estado d
 - **Persistencia de Datos**: Implementar almacenamiento de datos para guardar las misiones asignadas y el estado de los soldados en una base de datos o archivo.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Nuevas Funcionalidades Añadidas  1/12/24
 
-Nuevas Funcionalidades Añadidas
 El proyecto ahora cuenta con una interfaz gráfica que permite interactuar con los soldados, asignarles misiones, crear nuevos soldados y realizar acciones específicas. Estas nuevas características se implementaron en las siguientes clases:
 
-6. Marco principal.java
-Clase principal que representa la interfaz gráfica del sistema militar. Utiliza la biblioteca Swingpara crear una ventana con múltiples funcionalidades.
+### 6. MainFrame.java
 
-Componentes principales:
-Lista de Soldados : Visualiza los soldados actuales en una lista.
-Panel de Detalles : Muestra información detallada del soldado seleccionado, incluyendo atributos específicos según su rango.
-Área de Acciones : Registra y muestra las acciones realizadas por los soldados.
-Botones de interacción :
-Asignar misiones.
-Realizar acciones.
-Crear nuevos soldados.
-Reiniciar la lista de soldados por defecto.
-Menú : Incluye opciones como salir del programa.
-SplitPane : Divide la ventana para mostrar simultáneamente la lista de soldados y los detalles del soldado seleccionado.
-Funcionalidades principales:
-Asignar Misiones : Permite asignar misiones a los soldados seleccionados.
-Realizar acciones : Ejecuta acciones específicas según el rango del soldado.
-Prepararse para la Misión : Los soldados pueden alistarse para la misión asignada.
-Reportar Estado : Los soldados reportan su estado actual.
-Crear Nuevo Soldado : Abre un diálogo para agregar nuevos soldados al sistema.
-Look and Feel Personalizado : Aplica un diseño visual moderno usando Nimbusel tema del sistema operativo.
-7. CrearSoldadoDialog.java
+Clase principal que representa la interfaz gráfica del sistema militar. Utiliza la biblioteca `Swing` para crear una ventana con múltiples funcionalidades.
+
+#### **Componentes Principales:**
+
+-   **Lista de Soldados**: Visualiza los soldados actuales en una lista.
+-   **Panel de Detalles**: Muestra información detallada del soldado seleccionado, incluyendo atributos específicos según su rango.
+-   **Área de Acciones**: Registra y muestra las acciones realizadas por los soldados.
+-   **Botones de Interacción**:
+    -   Asignar misiones.
+    -   Realizar acciones.
+    -   Crear nuevos soldados.
+    -   Reiniciar la lista de soldados por defecto.
+-   **Menú**: Incluye opciones como salir del programa.
+-   **SplitPane**: Divide la ventana para mostrar simultáneamente la lista de soldados y los detalles del soldado seleccionado.
+
+#### **Funcionalidades Principales:**
+
+-   **Asignar Misiones**: Permite asignar misiones a los soldados seleccionados.
+-   **Realizar Acciones**: Ejecuta acciones específicas según el rango del soldado.
+-   **Prepararse para la Misión**: Los soldados pueden alistarse para la misión asignada.
+-   **Reportar Estado**: Los soldados reportan su estado actual.
+-   **Crear Nuevo Soldado**: Abre un diálogo para agregar nuevos soldados al sistema.
+-   **Look and Feel Personalizado**: Aplica un diseño visual moderno usando `Nimbus` o el tema del sistema operativo.
+
+----------
+
+### 7. CrearSoldadoDialog.java
+
 Clase que define un diálogo modal para la creación de nuevos soldados y su adición a la lista principal.
 
-Componentes principales:
-Campos de Entrada : Recogen datos como nombre, ID y atributos específicos según el rango del soldado.
-Menú Desplegable : Permite seleccionar el rango del soldado ( Soldado Raso, Teniente, Capitán, Coronel).
-Botones :
-Crear: Agrega el nuevo soldado al sistema.
-Cancelar: Cierra el diálogo sin realizar cambios.
-Funcionalidades principales:
-Actualización Dinámica de Campos : Los campos específicos del rango seleccionado se muestran u ocultan automáticamente.
-Validación de datos : Garantiza que los campos obligatorios estén completos antes de crear un soldado.
-Adición al Sistema : Una vez creado, el nuevo soldado se agrega al modelo y es visible en la lista principal.
-Ejecución de la Interfaz Gráfica
-Para ejecutar la interfaz gráfica, compila y ejecuta el archivo MainFrame.java.
+#### **Componentes Principales:**
 
-Mejoras visuales
-El sistema implementa un Look and Feel utilizando Nimbusel sistema operativo, mejorando la experiencia del usuario con un diseño moderno y colores personalizados.
+-   **Campos de Entrada**: Recogen datos como nombre, ID y atributos específicos según el rango del soldado.
+-   **Menú Desplegable**: Permite seleccionar el rango del soldado (`Soldado Raso`, `Teniente`, `Capitán`, `Coronel`).
+-   **Botones**:
+    -   Crear: Agrega el nuevo soldado al sistema.
+    -   Cancelar: Cierra el diálogo sin realizar cambios.
+
+#### **Funcionalidades Principales:**
+
+-   **Actualización Dinámica de Campos**: Los campos específicos del rango seleccionado se muestran u ocultan automáticamente.
+-   **Validación de Datos**: Garantiza que los campos obligatorios estén completos antes de crear un soldado.
+-   **Adición al Sistema**: Una vez creado, el nuevo soldado se agrega al modelo y es visible en la lista principal.
+
+----------
+
+### Ejecución de la Interfaz Gráfica
+
+Para ejecutar la interfaz gráfica, compila y ejecuta el archivo `MainFrame.java`.
+
+### Mejoras Visuales
+
+El sistema implementa un **Look and Feel** utilizando `Nimbus` o el del sistema operativo, mejorando la experiencia de usuario con un diseño moderno y colores personalizados.
 
     
 
