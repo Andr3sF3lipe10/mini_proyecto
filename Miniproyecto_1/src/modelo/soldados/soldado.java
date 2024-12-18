@@ -1,4 +1,4 @@
-package militar.soldados;
+package modelo.soldados;
 
 public class soldado {
     protected String nombre;

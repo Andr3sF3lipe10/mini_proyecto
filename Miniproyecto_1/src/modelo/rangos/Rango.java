@@ -1,7 +1,7 @@
-package militar.rangos;
+package modelo.rangos;
 
-import militar.operaciones.OperacionesMilitares;
-import militar.soldados.soldado;;
+import modelo.operaciones.OperacionesMilitares;
+import modelo.soldados.soldado;;
 
 /**
  * Clase abstracta que representa un rango militar.

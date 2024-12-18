@@ -1,6 +1,9 @@
-import militar.rangos.Rango;
-import militar.soldados.*;
+package vista;
 import javax.swing.*;
+
+import modelo.rangos.Rango;
+import modelo.soldados.*;
+
 import java.awt.*;
 
 /**

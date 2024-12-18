@@ -1,6 +1,6 @@
-package militar.soldados;
+package modelo.soldados;
 
-import militar.rangos.Rango;
+import modelo.rangos.Rango;
 
 /**
  * Clase que representa a un Coronel.

@@ -1,9 +1,11 @@
-import militar.rangos.Rango;
-import militar.soldados.*;
+package vista;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+import modelo.rangos.Rango;
+import modelo.soldados.*;
 
 
 /**
@@ -290,6 +292,37 @@ public class MainFrame extends JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    public JButton getBtnAsignarMision() {
+        return btnAsignarMision;
+    }
+
+    public JButton getBtnRealizarAccion() {
+        return btnRealizarAccion;
+    }
+
+    public JButton getBtnCrearSoldado() {
+        return btnCrearSoldado;
+    }
+
+    public JButton getBtnReset() {
+        return btnReset;
+    }
+
+    public JMenuItem getMenuItemSalir() {
+        return menuItemSalir;
+    }
+
+    public JList<Rango> getListSoldados() {
+        return listSoldados;
+    }
+
+    public JTextField getTxtMision() {
+        return txtMision;
+    }
+
+    public JTextArea getTxtAreaAcciones() {
+        return txtAreaAcciones;
     }
 
     /**
