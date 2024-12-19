@@ -334,8 +334,11 @@ public class MainFrame extends JFrame {
     
     public void setModeloSoldados(DefaultListModel<Rango> modelo) {
         this.modeloSoldados = modelo;
-        listSoldados.setModel(modelo);
+        listSoldados.setModel(modelo); // Configura el JList con el modelo compartido
+        listSoldados.repaint(); // Fuerza la actualización de la lista
     }
+    
+    
     
 
 

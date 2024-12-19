@@ -1,40 +1,52 @@
 import controlador.SoldadoController;
 import vista.MainFrame;
-import javax.swing.DefaultListModel;
+import controlador.ConsolaController;
 import modelo.rangos.*;
+import javax.swing.DefaultListModel;
 import java.util.Scanner;
 
 public class App {
+    private static final DefaultListModel<Rango> modeloSoldados = new DefaultListModel<>();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Seleccione el modo de ejecución:");
-        System.out.println("1. Consola");
-        System.out.println("2. Interfaz gráfica");
-        int opcion = scanner.nextInt();
-        scanner.close();
-        if (opcion == 1) {
-            ejecutarModoConsola();
-        } else if (opcion == 2) {
-            ejecutarModoGrafico();
-        } else {
-            System.out.println("Opción no válida.");
+        int opcion = -1;
+
+        while (opcion != 3) {
+            System.out.println("\nSeleccione el modo de ejecución:");
+            System.out.println("1. Consola");
+            System.out.println("2. Interfaz gráfica");
+            System.out.println("3. Salir");
+            System.out.print("Ingrese su opción: ");
+            
+            try {
+                opcion = Integer.parseInt(scanner.nextLine());
+                switch (opcion) {
+                    case 1 -> ejecutarModoConsola();
+                    case 2 -> ejecutarModoGrafico();
+                    case 3 -> System.out.println("Saliendo del programa. ¡Hasta luego!");
+                    default -> System.out.println("Opción no válida. Intente de nuevo.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, ingrese un número válido.");
+            }
         }
+        
+        scanner.close(); // Cerrar el scanner al finalizar
     }
 
     private static void ejecutarModoConsola() {
-        // Implementar la lógica para el modo consola aquí
-        System.out.println("Modo consola no implementado.");
+        ConsolaController consolaController = new ConsolaController(modeloSoldados);
+        consolaController.iniciarConsola();
     }
 
     private static void ejecutarModoGrafico() {
         java.awt.EventQueue.invokeLater(() -> {
-            DefaultListModel<Rango> modeloSoldados = new DefaultListModel<>();
             MainFrame mainFrame = new MainFrame();
-            mainFrame.setModeloSoldados(modeloSoldados); // Sincronizar modelo con vista
-            new SoldadoController(mainFrame, modeloSoldados);
+            mainFrame.setModeloSoldados(modeloSoldados); // Modelo compartido
+            new SoldadoController(mainFrame, modeloSoldados); // Pasa el modelo
             mainFrame.setVisible(true);
         });
     }
-    
     
 }
