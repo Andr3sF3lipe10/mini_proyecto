@@ -28,10 +28,13 @@ public class App {
 
     private static void ejecutarModoGrafico() {
         java.awt.EventQueue.invokeLater(() -> {
-            MainFrame mainFrame = new MainFrame();
             DefaultListModel<Rango> modeloSoldados = new DefaultListModel<>();
+            MainFrame mainFrame = new MainFrame();
+            mainFrame.setModeloSoldados(modeloSoldados); // Sincronizar modelo con vista
             new SoldadoController(mainFrame, modeloSoldados);
             mainFrame.setVisible(true);
         });
     }
+    
+    
 }
