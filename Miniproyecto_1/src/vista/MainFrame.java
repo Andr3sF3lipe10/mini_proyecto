@@ -324,6 +324,20 @@ public class MainFrame extends JFrame {
     public JTextArea getTxtAreaAcciones() {
         return txtAreaAcciones;
     }
+    public JCheckBox getChkPrepararse() {
+        return chkPrepararse;
+    }
+    
+    public JRadioButton getRbtnReporteEstado() {
+        return rbtnReporteEstado;
+    }
+    
+    public void setModeloSoldados(DefaultListModel<Rango> modelo) {
+        this.modeloSoldados = modelo;
+        listSoldados.setModel(modelo);
+    }
+    
+
 
     /**
      * Método principal para ejecutar la aplicación.
