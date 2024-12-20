@@ -156,10 +156,75 @@ Para ejecutar la interfaz gráfica, compila y ejecuta el archivo `MainFrame.java
 ### Mejoras Visuales
 
 El sistema implementa un **Look and Feel** utilizando `Nimbus` o el del sistema operativo, mejorando la experiencia de usuario con un diseño moderno y colores personalizados.
+----------------------------------------------------------------------------------------------------------------------------------------
 
+### Nuevas Funcionalidades Añadidas 20/12/24
+
+#### Implementación del Modelo-Vista-Controlador (MVC)
+
+Se realizó una reestructuración del proyecto para implementar el patrón de diseño **Modelo-Vista-Controlador (MVC)**, mejorando la organización del código, la escalabilidad y la separación de responsabilidades. A continuación, se detalla cómo se implementó este patrón en el sistema:
+
+----------
+
+#### **1. Modelo (Model)**
+
+El modelo gestiona toda la lógica de datos y reglas de negocio relacionadas con los soldados, misiones y actividades.
+
+-   **Clases Principales del Modelo**:
+    
+    -   `Soldado.java`: Clase base que encapsula la información de los soldados (nombre, ID, rango) y sus métodos generales.
+    -   Clases de Rango (`SoldadoRaso.java`, `Teniente.java`, `Capitan.java`, `Coronel.java`): Extienden la funcionalidad del modelo base añadiendo comportamientos específicos según el rango.
+    -   `RegistroActividades.java`: Nueva clase creada para almacenar y gestionar las actividades realizadas por los soldados, como misiones asignadas o acciones ejecutadas.
+    -   `GestionSoldados.java`: Clase encargada de centralizar la lógica del sistema, permitiendo la creación, asignación de misiones y actualización de estados de los soldados.
+-   **Persistencia**: Los datos de las actividades se almacenan en un archivo de texto (`registro_actividades.txt`) para su posterior consulta.
     
 
+----------
 
+#### **2. Vista (View)**
+
+La vista se encarga de toda la interacción con el usuario, tanto en la interfaz gráfica como en la consola.
+
+-   **Clases Principales de la Vista**:
+    -   `MainFrame.java`: Representa la ventana principal de la interfaz gráfica.
+        -   **Componentes**:
+            -   Lista de soldados para seleccionar y visualizar los detalles.
+            -   Paneles dedicados para mostrar la información detallada de cada soldado y el historial de actividades.
+            -   Botones para ejecutar acciones como asignar misiones, crear nuevos soldados y reportar estados.
+    -   `CrearSoldadoDialog.java`: Diálogo modal que permite al usuario agregar nuevos soldados al sistema. Incluye validación dinámica según el rango seleccionado.
+    -   Panel de Registro de Actividades: Se agregó un panel en la interfaz gráfica para visualizar el historial de acciones realizadas.
+    -   Consola: Aunque la interfaz gráfica es la principal, el programa sigue mostrando un resumen de las interacciones al finalizar en la consola para garantizar accesibilidad.
+
+----------
+
+#### **3. Controlador (Controller)**
+
+El controlador conecta la vista con el modelo, gestionando los eventos y las interacciones del usuario.
+
+-   **Clase Principal del Controlador**:
+    
+    -   `SistemaControlador.java`: Controlador principal que coordina las acciones entre la vista y el modelo.
+        -   **Responsabilidades**:
+            -   Escuchar los eventos de los botones en la interfaz gráfica (e.g., asignar misión, crear soldado).
+            -   Invocar métodos del modelo para actualizar datos (e.g., registrar actividades, actualizar estados).
+            -   Actualizar la vista en función de los cambios en el modelo (e.g., mostrar un nuevo soldado en la lista).
+-   **Eventos Implementados**:
+    
+    -   Asignación de misiones: Vincula la acción del usuario en la vista con la lógica de negocio en el modelo.
+    -   Creación de nuevos soldados: Valida la entrada del usuario, actualiza el modelo y refleja el cambio en la lista de soldados de la interfaz gráfica.
+    -   Reportar estado: Solicita al modelo la información actualizada y la muestra en la vista.
+
+----------
+
+#### **Beneficios de la Implementación del MVC**
+
+-   **Separación de responsabilidades**:  
+    Cada capa tiene una función clara, lo que facilita el mantenimiento y la adición de nuevas funcionalidades.
+-   **Escalabilidad**:  
+    La estructura del proyecto ahora permite agregar más componentes sin afectar la funcionalidad existente.
+-   **Reutilización de Código**:  
+    Los componentes del modelo y la vista son independientes, permitiendo su reutilización en futuros proyectos o ampliaciones del sistema.
+---------------------------------------------------------------------------------------------------------------------------------------
 
 ## Autores
 
